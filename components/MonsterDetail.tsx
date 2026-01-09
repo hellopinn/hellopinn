@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Monster, DetectionType } from '../types';
 
@@ -36,8 +37,14 @@ const MonsterDetail: React.FC<MonsterDetailProps> = ({ monster, dungeonName, flo
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/60 backdrop-blur-xl animate-in fade-in duration-300">
-      <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-[2.5rem] shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/60 backdrop-blur-xl animate-in fade-in duration-300 cursor-pointer"
+      onClick={onClose}
+    >
+      <div 
+        className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-[2.5rem] shadow-2xl overflow-hidden max-h-[90vh] flex flex-col cursor-default"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Header */}
         <div className={`p-10 border-b border-slate-100 flex justify-between items-start ${getHeaderGradient()}`}>
           <div>
