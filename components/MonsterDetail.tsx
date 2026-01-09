@@ -77,7 +77,6 @@ const MonsterDetail: React.FC<MonsterDetailProps> = ({ monster, dungeonName, flo
             </div>
             <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100 shadow-sm">
               <p className="text-[10px] font-black text-slate-400 uppercase mb-2 tracking-widest">장판 모양</p>
-              {/* break-keep을 사용하여 단어가 잘리지 않게 강제 줄바꿈 처리 */}
               <p className="text-xl font-black text-emerald-600 break-keep">{monster.aoeShape}</p>
             </div>
           </div>
@@ -119,7 +118,7 @@ const MonsterDetail: React.FC<MonsterDetailProps> = ({ monster, dungeonName, flo
                 파훼법 가이드
               </h3>
               <div className="bg-slate-50 p-8 rounded-[2rem] text-slate-800 leading-relaxed border border-slate-100 shadow-inner">
-                <p className="whitespace-pre-line font-bold text-lg leading-relaxed">{monster.avoidance}</p>
+                <p className="whitespace-pre-line font-bold text-lg leading-relaxed break-keep">{monster.avoidance}</p>
               </div>
             </section>
           </div>

@@ -90,8 +90,8 @@ const App: React.FC = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
               </div>
               <div className="overflow-hidden">
-                {/* 텍스트 크기를 80%로 축소, 하단이 잘리지 않도록 leading-tight 및 pb-1 추가 */}
-                <h1 className="text-[clamp(1.2rem,3.6vw,3.2rem)] font-black text-slate-900 tracking-tighter leading-tight drop-shadow-sm whitespace-nowrap pb-1">
+                {/* 텍스트 크기를 80%로 축소, 하단이 잘리지 않도록 leading-snug 및 pb-1.5 추가 */}
+                <h1 className="text-[clamp(1.2rem,3.6vw,3.2rem)] font-black text-slate-900 tracking-tighter leading-snug drop-shadow-sm whitespace-nowrap pb-1.5">
                   딥던전 커닝페이퍼
                 </h1>
               </div>

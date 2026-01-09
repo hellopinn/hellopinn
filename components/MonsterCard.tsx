@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Monster, DetectionType } from '../types';
+import { Monster, DetectionType, CrowdControl } from '../types';
 
 interface MonsterCardProps {
   monster: Monster;
@@ -52,6 +52,11 @@ const MonsterCard: React.FC<MonsterCardProps> = ({ monster, onClick }) => {
     );
   };
 
+  // 기절, 수면 면역만 필터링하여 뱃지로 표시
+  const filteredImmuneCC = monster.immuneCC.filter(
+    cc => cc === CrowdControl.STUN || cc === CrowdControl.SLEEP
+  );
+
   return (
     <div 
       onClick={onClick}
@@ -94,7 +99,6 @@ const MonsterCard: React.FC<MonsterCardProps> = ({ monster, onClick }) => {
         </div>
       </div>
 
-      {/* 태그 컨테이너: gap-0.5로 줄여서 한 줄 배치를 유도 */}
       <div className="mt-4 flex flex-wrap gap-0.5 relative z-10 overflow-hidden">
         {monster.features?.map(feature => (
           <span key={feature} className="text-[9px] px-1 py-1 rounded-lg bg-sky-50 text-sky-600 border border-sky-100 font-black uppercase shadow-sm tracking-tighter whitespace-nowrap">
@@ -102,17 +106,12 @@ const MonsterCard: React.FC<MonsterCardProps> = ({ monster, onClick }) => {
           </span>
         ))}
         
-        {monster.immuneCC.length > 0 ? (
-          monster.immuneCC.map(cc => (
-            <span key={cc} className="text-[9px] px-1 py-1 rounded-lg bg-red-50 text-red-600 border border-red-100 font-black shadow-sm tracking-tighter whitespace-nowrap">
-              {cc} 무효
-            </span>
-          ))
-        ) : (
-          <span className="text-[9px] px-1 py-1 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-100 font-black shadow-sm tracking-tighter whitespace-nowrap">
-            CC 유효
+        {filteredImmuneCC.map(cc => (
+          <span key={cc} className="text-[9px] px-1 py-1 rounded-lg bg-red-50 text-red-600 border border-red-100 font-black shadow-sm tracking-tighter whitespace-nowrap">
+            {cc} 무효
           </span>
-        )}
+        ))}
+
         {monster.customImmuneNote && (
           <span className="text-[9px] px-1 py-1 rounded-lg bg-purple-50 text-purple-600 border border-purple-100 font-black shadow-sm tracking-tighter whitespace-nowrap">
             {monster.customImmuneNote}
