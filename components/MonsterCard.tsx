@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Monster, DetectionType } from '../types';
 
@@ -81,7 +82,6 @@ const MonsterCard: React.FC<MonsterCardProps> = ({ monster, onClick }) => {
           </div>
         </div>
         
-        {/* 간격을 space-y-4에서 space-y-2로 줄이고 mt-6에서 mt-4로 조정 */}
         <div className="space-y-2 mt-4">
           <div className="flex items-center gap-4">
             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest w-8 shrink-0">감지</span>
@@ -94,27 +94,27 @@ const MonsterCard: React.FC<MonsterCardProps> = ({ monster, onClick }) => {
         </div>
       </div>
 
-      {/* 구분선 border-t 제거 및 여백 mt-8 pt-4에서 mt-4로 축소 */}
-      <div className="mt-4 flex flex-wrap gap-2 relative z-10">
+      {/* 태그 컨테이너: gap-0.5로 줄여서 한 줄 배치를 유도 */}
+      <div className="mt-4 flex flex-wrap gap-0.5 relative z-10 overflow-hidden">
         {monster.features?.map(feature => (
-          <span key={feature} className="text-[9px] px-2 py-1 rounded-lg bg-sky-50 text-sky-600 border border-sky-100 font-black uppercase shadow-sm">
+          <span key={feature} className="text-[9px] px-1 py-1 rounded-lg bg-sky-50 text-sky-600 border border-sky-100 font-black uppercase shadow-sm tracking-tighter whitespace-nowrap">
             {feature}
           </span>
         ))}
         
         {monster.immuneCC.length > 0 ? (
           monster.immuneCC.map(cc => (
-            <span key={cc} className="text-[9px] px-2 py-1 rounded-lg bg-red-50 text-red-600 border border-red-100 font-black shadow-sm">
+            <span key={cc} className="text-[9px] px-1 py-1 rounded-lg bg-red-50 text-red-600 border border-red-100 font-black shadow-sm tracking-tighter whitespace-nowrap">
               {cc} 무효
             </span>
           ))
         ) : (
-          <span className="text-[9px] px-2 py-1 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-100 font-black shadow-sm">
+          <span className="text-[9px] px-1 py-1 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-100 font-black shadow-sm tracking-tighter whitespace-nowrap">
             CC 유효
           </span>
         )}
         {monster.customImmuneNote && (
-          <span className="text-[9px] px-2 py-1 rounded-lg bg-purple-50 text-purple-600 border border-purple-100 font-black shadow-sm">
+          <span className="text-[9px] px-1 py-1 rounded-lg bg-purple-50 text-purple-600 border border-purple-100 font-black shadow-sm tracking-tighter whitespace-nowrap">
             {monster.customImmuneNote}
           </span>
         )}

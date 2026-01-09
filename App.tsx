@@ -68,51 +68,55 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white pb-20">
-      {/* 헤더 섹션: 높이가 화면 너비에 비례하도록 aspect-ratio와 clamp를 조합하여 유연성 극대화 */}
-      <div className="relative w-full overflow-hidden bg-slate-900 h-[35vh] sm:h-[45vh] lg:h-[55vh] min-h-[380px] max-h-[700px]">
+      {/* 헤더 섹션: 높이 비율을 더 컴팩트하게 조절하여 이미지를 더 잘 보이게 함 */}
+      <div className="relative w-full overflow-hidden bg-slate-900 h-[30vh] sm:h-[40vh] lg:h-[50vh] min-h-[360px] max-h-[600px]">
         <div 
           className="absolute inset-0 bg-cover bg-no-repeat transition-all duration-700"
           style={{ 
             backgroundImage: `url('https://i.postimg.cc/VN3vBrvB/illeoseuteu3-waifu2x-art-noise3-scale.png')`,
-            // 캐릭터의 얼굴이 더 잘 보이도록 위치를 32% 정도로 하향 조정 (기존 15%)
             backgroundPosition: 'center 32%'
           }}
         ></div>
-        <div className="absolute inset-0 bg-black/15"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
+        
+        {/* 오버레이: 상단은 투명하게, 하단 글씨 부분만 가독성을 위해 그라데이션 */}
+        <div className="absolute inset-0 bg-black/5"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent"></div>
 
-        <header className="absolute inset-0 flex flex-col justify-end px-6 pb-12 md:pb-20 max-w-7xl mx-auto w-full">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 md:gap-10">
-            <div className="flex items-center gap-4 md:gap-6 group">
-              {/* 아이콘 크기 반응형 최적화 */}
-              <div className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-indigo-600 rounded-2xl md:rounded-3xl flex items-center justify-center shadow-[0_25px_60px_rgba(79,70,229,0.5)] group-hover:rotate-3 transition-transform shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <header className="absolute inset-0 flex flex-col justify-end px-6 pb-6 md:pb-10 max-w-7xl mx-auto w-full">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 md:gap-8">
+            <div className="flex items-center gap-3 md:gap-5 group">
+              {/* 아이콘 크기를 살짝 줄여서 텍스트 라인에 맞춤 */}
+              <div className="w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-indigo-600 rounded-xl md:rounded-2xl flex items-center justify-center shadow-[0_15px_40px_rgba(79,70,229,0.4)] group-hover:rotate-3 transition-transform shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
               </div>
               <div className="overflow-hidden">
-                <h1 className="text-[clamp(1.75rem,5vw,4.5rem)] font-black text-slate-900 tracking-tighter leading-none drop-shadow-2xl whitespace-nowrap">
+                <h1 className="text-[clamp(1.5rem,4.5vw,4rem)] font-black text-slate-900 tracking-tighter leading-none drop-shadow-sm whitespace-nowrap">
                   딥던전 커닝페이퍼
                 </h1>
-                <div className="mt-2 md:mt-3 h-1.5 md:h-2 w-1/2 md:w-48 bg-indigo-600 rounded-full shadow-lg"></div>
+                {/* 언더바도 텍스트 크기에 맞춰 조절 */}
+                <div className="mt-1.5 md:mt-2 h-1 md:h-1.5 w-1/3 md:w-32 bg-indigo-600 rounded-full shadow-md"></div>
               </div>
             </div>
 
-            <div className="flex items-center bg-white/95 backdrop-blur-3xl rounded-2xl md:rounded-[2rem] px-5 py-3 md:px-8 md:py-5 border border-slate-200 focus-within:border-indigo-500 focus-within:ring-8 focus-within:ring-indigo-500/10 transition-all shadow-[0_35px_60px_-15px_rgba(0,0,0,0.2)] w-full lg:w-[480px]">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 md:w-6 md:h-6 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            {/* 검색창도 헤더 하단에 정렬되도록 함 */}
+            <div className="flex items-center bg-white/95 backdrop-blur-3xl rounded-xl md:rounded-[1.5rem] px-4 py-2.5 md:px-6 md:py-4 border border-slate-200 focus-within:border-indigo-500 focus-within:ring-4 focus-within:ring-indigo-500/10 transition-all shadow-xl w-full lg:w-[420px]">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 md:w-5 md:h-5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
               <input 
                 type="text" 
                 placeholder="어떤 몬스터가 궁금하신가요?" 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-transparent border-none focus:outline-none ml-3 md:ml-4 text-base md:text-xl w-full text-slate-900 placeholder:text-slate-400 font-bold"
+                className="bg-transparent border-none focus:outline-none ml-2 md:ml-3 text-sm md:text-lg w-full text-slate-900 placeholder:text-slate-400 font-bold"
               />
             </div>
           </div>
         </header>
       </div>
 
-      <main className="max-w-7xl mx-auto px-6 -mt-8 md:-mt-10 relative z-20">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-10 md:mb-16 bg-white/80 backdrop-blur-md p-4 md:p-6 rounded-2xl md:rounded-[2.5rem] border border-slate-100 shadow-xl gap-4 md:gap-6">
-          <div className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-4">
+      <main className="max-w-7xl mx-auto px-6 -mt-6 md:-mt-8 relative z-20">
+        {/* 던전 선택 바: shadow 블러 범위를 기존의 절반인 6px, 2px로 축소 */}
+        <div className="flex flex-col md:flex-row items-center justify-between mb-8 md:mb-12 bg-white/80 backdrop-blur-md p-3 md:p-5 rounded-xl md:rounded-[2rem] border border-slate-100 shadow-[0_10px_6px_-5px_rgba(0,0,0,0.1),0_4px_2px_-3px_rgba(0,0,0,0.1)] gap-3 md:gap-5">
+          <div className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-3">
             {DUNGEONS.map(d => (
               <button
                 key={d.id}
@@ -120,10 +124,10 @@ const App: React.FC = () => {
                   setSelectedDungeonId(d.id);
                   setSearchQuery(''); 
                 }}
-                className={`px-4 py-2 md:px-8 md:py-4 rounded-xl md:rounded-2xl text-sm md:text-lg font-black transition-all transform active:scale-95 ${
+                className={`px-4 py-2 md:px-6 md:py-3 rounded-lg md:rounded-xl text-xs md:text-base font-black transition-all transform active:scale-95 ${
                   selectedDungeonId === d.id 
-                  ? 'bg-indigo-600 text-white shadow-[0_15px_30px_rgba(79,70,229,0.3)] ring-4 ring-indigo-50' 
-                  : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200 shadow-sm'
+                  ? 'bg-indigo-600 text-white shadow-lg ring-2 ring-indigo-50' 
+                  : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
                 {d.name}
@@ -132,15 +136,15 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
-          <aside className="lg:w-60 shrink-0">
-            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-1 gap-3 md:gap-4 sticky top-10">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+          <aside className="lg:w-56 shrink-0">
+            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-1 gap-2 md:gap-3 sticky top-6">
               {availableRanges.map(range => {
                 const cat = getFloorCategory(range);
                 const isSelected = selectedRange === range && !searchQuery;
-                const activeStyles = cat.color === 'red' ? 'border-red-500 text-red-600 bg-red-50 shadow-red-50' : 
-                                    cat.color === 'amber' ? 'border-amber-500 text-amber-600 bg-amber-50 shadow-amber-50' : 
-                                    'border-indigo-500 text-indigo-600 bg-indigo-50 shadow-indigo-50';
+                const activeStyles = cat.color === 'red' ? 'border-red-500 text-red-600 bg-red-50' : 
+                                    cat.color === 'amber' ? 'border-amber-500 text-amber-600 bg-amber-50' : 
+                                    'border-indigo-500 text-indigo-600 bg-indigo-50';
                 
                 return (
                   <button
@@ -149,11 +153,11 @@ const App: React.FC = () => {
                       setSelectedRange(range);
                       setSearchQuery(''); 
                     }}
-                    className={`px-4 py-3 md:px-6 md:py-5 rounded-xl md:rounded-2xl text-left transition-all border-2 group relative overflow-hidden font-black text-sm md:text-lg ${
-                      isSelected ? `${activeStyles} shadow-lg scale-[1.02]` : 'bg-slate-50 border-slate-50 text-slate-400 hover:border-slate-300 hover:text-slate-600 hover:bg-white'
+                    className={`px-3 py-2.5 md:px-5 md:py-4 rounded-lg md:rounded-xl text-left transition-all border-2 font-black text-xs md:text-base ${
+                      isSelected ? `${activeStyles} shadow-md scale-[1.02]` : 'bg-slate-50 border-slate-50 text-slate-400 hover:border-slate-300 hover:bg-white'
                     }`}
                   >
-                    <span className="relative z-10">{range}F</span>
+                    {range}F
                   </button>
                 );
               })}
@@ -161,17 +165,14 @@ const App: React.FC = () => {
           </aside>
 
           <section className="flex-1">
-            <div className="mb-8 md:mb-12">
-              <h2 className="text-2xl md:text-4xl font-black text-slate-900 tracking-tighter flex items-center gap-4">
+            <div className="mb-6 md:mb-8">
+              <h2 className="text-xl md:text-3xl font-black text-slate-900 tracking-tighter">
                 {searchQuery ? '검색 결과' : `${selectedRange}층 가이드`}
               </h2>
-              {searchQuery && (
-                <p className="text-sm md:text-slate-400 mt-2 font-bold">'{searchQuery}'에 대한 검색 결과입니다.</p>
-              )}
             </div>
 
             {filteredMonsters.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
                 {filteredMonsters.map(monster => (
                   <MonsterCard 
                     key={monster.id} 
@@ -181,16 +182,13 @@ const App: React.FC = () => {
                 ))}
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center py-24 md:py-40 bg-slate-50 rounded-[2.5rem] md:rounded-[4rem] border-2 border-dashed border-slate-200">
-                <div className="w-16 h-16 md:w-24 md:h-24 bg-white rounded-2xl md:rounded-3xl flex items-center justify-center mb-6 md:mb-10 text-slate-200 shadow-xl">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 md:w-12 md:h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <div className="flex flex-col items-center justify-center py-20 md:py-32 bg-slate-50 rounded-[2rem] md:rounded-[3rem] border-2 border-dashed border-slate-200">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-8 text-slate-200 shadow-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-8 md:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                 </div>
-                <h3 className="text-xl md:text-3xl font-black text-slate-800 tracking-tight">
-                  {searchQuery ? '검색 결과가 없습니다' : '정보를 수집 중입니다'}
+                <h3 className="text-lg md:text-2xl font-black text-slate-800 tracking-tight">
+                  정보가 없습니다
                 </h3>
-                <p className="text-sm md:text-lg text-slate-400 mt-2 md:mt-4 font-bold text-center px-6">
-                  {searchQuery ? '다른 검색어를 입력해 보세요.' : '선택하신 층의 상세 데이터가 아직 준비되지 않았습니다.'}
-                </p>
               </div>
             )}
           </section>
