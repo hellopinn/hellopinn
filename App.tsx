@@ -82,7 +82,8 @@ const App: React.FC = () => {
         <div className="absolute inset-0 bg-black/5"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent"></div>
 
-        <header className="absolute inset-0 flex flex-col justify-end px-6 pb-6 md:pb-10 max-w-7xl mx-auto w-full">
+        {/* 헤더 내용: pb-12 md:pb-20의 70%인 pb-9 md:pb-14로 조정하여 간격을 최적화했습니다. */}
+        <header className="absolute inset-0 flex flex-col justify-end px-6 pb-9 md:pb-14 max-w-7xl mx-auto w-full">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 md:gap-8">
             <div className="flex items-center gap-3 md:gap-5 group">
               {/* 아이콘 크기를 살짝 줄여서 텍스트 라인에 맞춤 */}
@@ -93,17 +94,15 @@ const App: React.FC = () => {
                 <h1 className="text-[clamp(1.5rem,4.5vw,4rem)] font-black text-slate-900 tracking-tighter leading-none drop-shadow-sm whitespace-nowrap">
                   딥던전 커닝페이퍼
                 </h1>
-                {/* 언더바도 텍스트 크기에 맞춰 조절 */}
-                <div className="mt-1.5 md:mt-2 h-1 md:h-1.5 w-1/3 md:w-32 bg-indigo-600 rounded-full shadow-md"></div>
               </div>
             </div>
 
-            {/* 검색창도 헤더 하단에 정렬되도록 함 */}
+            {/* 검색창 플레이스홀더를 '어떤 놈인지 알아보기'로 변경했습니다. */}
             <div className="flex items-center bg-white/95 backdrop-blur-3xl rounded-xl md:rounded-[1.5rem] px-4 py-2.5 md:px-6 md:py-4 border border-slate-200 focus-within:border-indigo-500 focus-within:ring-4 focus-within:ring-indigo-500/10 transition-all shadow-xl w-full lg:w-[420px]">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 md:w-5 md:h-5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
               <input 
                 type="text" 
-                placeholder="어떤 몬스터가 궁금하신가요?" 
+                placeholder="어떤 놈인지 알아보기" 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="bg-transparent border-none focus:outline-none ml-2 md:ml-3 text-sm md:text-lg w-full text-slate-900 placeholder:text-slate-400 font-bold"
