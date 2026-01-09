@@ -82,22 +82,22 @@ const App: React.FC = () => {
         <div className="absolute inset-0 bg-black/5"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent"></div>
 
-        {/* 헤더 내용: pb-12 md:pb-20의 70%인 pb-9 md:pb-14로 조정하여 간격을 최적화했습니다. */}
+        {/* 헤더 내용: pb-9 md:pb-14 (이전 간격의 70%) */}
         <header className="absolute inset-0 flex flex-col justify-end px-6 pb-9 md:pb-14 max-w-7xl mx-auto w-full">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 md:gap-8">
             <div className="flex items-center gap-3 md:gap-5 group">
-              {/* 아이콘 크기를 살짝 줄여서 텍스트 라인에 맞춤 */}
               <div className="w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-indigo-600 rounded-xl md:rounded-2xl flex items-center justify-center shadow-[0_15px_40px_rgba(79,70,229,0.4)] group-hover:rotate-3 transition-transform shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
               </div>
               <div className="overflow-hidden">
-                <h1 className="text-[clamp(1.5rem,4.5vw,4rem)] font-black text-slate-900 tracking-tighter leading-none drop-shadow-sm whitespace-nowrap">
+                {/* 텍스트 크기를 80%로 축소, 하단이 잘리지 않도록 leading-tight 및 pb-1 추가 */}
+                <h1 className="text-[clamp(1.2rem,3.6vw,3.2rem)] font-black text-slate-900 tracking-tighter leading-tight drop-shadow-sm whitespace-nowrap pb-1">
                   딥던전 커닝페이퍼
                 </h1>
               </div>
             </div>
 
-            {/* 검색창 플레이스홀더를 '어떤 놈인지 알아보기'로 변경했습니다. */}
+            {/* 검색창 플레이스홀더: 어떤 놈인지 알아보기 */}
             <div className="flex items-center bg-white/95 backdrop-blur-3xl rounded-xl md:rounded-[1.5rem] px-4 py-2.5 md:px-6 md:py-4 border border-slate-200 focus-within:border-indigo-500 focus-within:ring-4 focus-within:ring-indigo-500/10 transition-all shadow-xl w-full lg:w-[420px]">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 md:w-5 md:h-5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
               <input 
@@ -113,7 +113,6 @@ const App: React.FC = () => {
       </div>
 
       <main className="max-w-7xl mx-auto px-6 -mt-6 md:-mt-8 relative z-20">
-        {/* 던전 선택 바: shadow 블러 범위를 기존의 절반인 6px, 2px로 축소 */}
         <div className="flex flex-col md:flex-row items-center justify-between mb-8 md:mb-12 bg-white/80 backdrop-blur-md p-3 md:p-5 rounded-xl md:rounded-[2rem] border border-slate-100 shadow-[0_10px_6px_-5px_rgba(0,0,0,0.1),0_4px_2px_-3px_rgba(0,0,0,0.1)] gap-3 md:gap-5">
           <div className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-3">
             {DUNGEONS.map(d => (
