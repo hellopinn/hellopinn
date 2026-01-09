@@ -68,28 +68,28 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white pb-20">
-      {/* 반응형 헤더 섹션: 높이를 고정 수치 대신 clamp와 vh를 조합하여 유연하게 조정 */}
-      <div className="relative h-[clamp(400px,55vh,650px)] w-full overflow-hidden bg-slate-900">
+      {/* 헤더 섹션: 높이가 화면 너비에 비례하도록 aspect-ratio와 clamp를 조합하여 유연성 극대화 */}
+      <div className="relative w-full overflow-hidden bg-slate-900 h-[35vh] sm:h-[45vh] lg:h-[55vh] min-h-[380px] max-h-[700px]">
         <div 
           className="absolute inset-0 bg-cover bg-no-repeat transition-all duration-700"
           style={{ 
             backgroundImage: `url('https://i.postimg.cc/VN3vBrvB/illeoseuteu3-waifu2x-art-noise3-scale.png')`,
-            backgroundPosition: 'center 15%'
+            // 캐릭터의 얼굴이 더 잘 보이도록 위치를 32% 정도로 하향 조정 (기존 15%)
+            backgroundPosition: 'center 32%'
           }}
         ></div>
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-black/15"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
 
         <header className="absolute inset-0 flex flex-col justify-end px-6 pb-12 md:pb-20 max-w-7xl mx-auto w-full">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 md:gap-10">
             <div className="flex items-center gap-4 md:gap-6 group">
-              {/* 아이콘 크기도 화면비에 따라 조절 */}
-              <div className="w-12 h-12 md:w-16 lg:w-20 lg:h-20 bg-indigo-600 rounded-2xl md:rounded-3xl flex items-center justify-center shadow-[0_25px_60px_rgba(79,70,229,0.5)] group-hover:rotate-3 transition-transform shrink-0">
+              {/* 아이콘 크기 반응형 최적화 */}
+              <div className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-indigo-600 rounded-2xl md:rounded-3xl flex items-center justify-center shadow-[0_25px_60px_rgba(79,70,229,0.5)] group-hover:rotate-3 transition-transform shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
               </div>
-              <div>
-                {/* 텍스트 크기에 clamp를 적용하여 해상도에 따라 부드럽게 가변 */}
-                <h1 className="text-[clamp(1.75rem,5vw,4.5rem)] font-black text-slate-900 tracking-tighter leading-none drop-shadow-2xl">
+              <div className="overflow-hidden">
+                <h1 className="text-[clamp(1.75rem,5vw,4.5rem)] font-black text-slate-900 tracking-tighter leading-none drop-shadow-2xl whitespace-nowrap">
                   딥던전 커닝페이퍼
                 </h1>
                 <div className="mt-2 md:mt-3 h-1.5 md:h-2 w-1/2 md:w-48 bg-indigo-600 rounded-full shadow-lg"></div>
